@@ -429,19 +429,6 @@ footer {
   color: #071111;
 }
 
-.video-bg iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.video-bg iframe,
-.video-bg #ytvideo {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
 .roadtrip-section {
   position: relative;
   overflow: hidden;
@@ -1062,4 +1049,43 @@ footer {
   .ar-model {
     height: 380px;
   }
+}
+
+.video-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.video-bg iframe,
+.video-bg #ytvideo {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 177.77vh !important;
+  height: 100vh !important;
+  min-width: 100vw !important;
+  min-height: 56.25vw !important;
+  max-width: none !important;
+  max-height: none !important;
+  transform: translate(-50%, -50%) !important;
+  border: 0;
+}
+
+@media (max-width: 850px) {
+  .video-bg iframe,
+  .video-bg #ytvideo {
+    width: 220vw !important;
+    height: 125vh !important;
+    min-width: 220vw !important;
+    min-height: 125vh !important;
+  }
+   .ar-main-btn {
+    display: inline-block;
+  }
+}
+
+.ar-main-btn {
+  display: none;
 }

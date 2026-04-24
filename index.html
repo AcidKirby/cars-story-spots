@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cars Story Spots</title>
+  <title>Inside Radiator Springs</title>
   <link rel="stylesheet" href="style.css" />
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <a href="#" class="logo">Cars Story Spots</a>
+    <a href="#" class="logo">Inside Radiator Springs</a>
     <nav>
       <a href="#spots">Spots</a>
       <a href="#ar">AR</a>
@@ -195,7 +195,7 @@
 
   <div class="ar-viewer">
 
-  <!-- 👇 SKETCHFAB = VISUELE PREVIEW -->
+
   <div class="sketchfab-embed-wrapper">
     <iframe
       title="Willy's Butte"
@@ -241,20 +241,24 @@
     <p>Cars Story Spots — individueel AR prototype</p>
     <p class="small">Fan concept voor schoolproject. Niet officieel verbonden aan Disney/Pixar.</p>
   </footer>
-  
+  <audio id="bgMusic" src="audio/Life-is-a-Highway.mp3" loop></audio>
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
   let player;
   let soundOn = false;
 
+  let music = document.getElementById("bgMusic");
+
   function onYouTubeIframeAPIReady() {
     player = new YT.Player("ytvideo", {
       videoId: "SbXIj2T-_uk",
+      
       playerVars: {
         autoplay: 1,
         mute: 1,
         loop: 1,
+        start: 40,
         playlist: "SbXIj2T-_uk",
         controls: 0,
         rel: 0,
@@ -264,42 +268,69 @@
         onReady: function (event) {
           event.target.playVideo();
           event.target.mute();
-        }
+        },
+        onStateChange: function (event) {
+  if (event.data === YT.PlayerState.ENDED) {
+    player.seekTo(40); // of jouw startpunt
+    player.playVideo();
+  }
+}
       }
-    });
+      
+    })
+    ;
   }
 
-  document.getElementById("soundBtn").addEventListener("click", function () {
-    if (!player) return;
+ document.getElementById("soundBtn").addEventListener("click", function () {
+  if (!player) return;
 
-    if (soundOn) {
-      player.mute();
-      this.textContent = "🔇 Geluid Uit";
-      soundOn = false;
-    } else {
-      player.unMute();
-      player.playVideo();
-      this.textContent = "🔊 Geluid Aan";
-      soundOn = true;
-    }
-  });
+  if (soundOn) {
+    player.mute();
+    music.pause();
+    this.textContent = "🔇 Geluid Uit";
+    soundOn = false;
 
-  window.addEventListener("scroll", function () {
-    if (!player) return;
+  } else {
+    player.unMute();
+    player.playVideo();
 
     const hero = document.querySelector(".hero");
     const heroBottom = hero.offsetTop + hero.offsetHeight;
 
     if (window.scrollY > heroBottom - 120) {
-      player.pauseVideo();
-    } else {
-      player.playVideo();
-
-      if (!soundOn) {
-        player.mute();
-      }
+      music.play().catch(() => {});
     }
-  });
+
+    this.textContent = "🔊 Geluid Aan";
+    soundOn = true;
+  }
+});
+
+  window.addEventListener("scroll", function () {
+  if (!player) return;
+
+  const hero = document.querySelector(".hero");
+  const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+  if (window.scrollY > heroBottom - 120) {
+    player.pauseVideo();
+    if (soundOn) {
+    
+      music.play().catch(() => {});
+    }
+
+  } else {
+    player.playVideo();
+
+    music.pause();
+    music.currentTime = 48;
+
+    if (!soundOn) {
+      player.mute();
+    }
+  }
+  
+});
 
  const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -313,6 +344,8 @@ document.querySelectorAll(".story-stop").forEach(el => {
   observer.observe(el);
 });
 
+
+
 function openAR() {
   const model = document.getElementById("arModel");
 
@@ -322,6 +355,9 @@ function openAR() {
     alert("AR wordt niet ondersteund op dit apparaat of deze browser.");
   }
 }
+
+
 </script>
+
 </body>
 </html>
