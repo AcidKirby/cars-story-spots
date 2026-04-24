@@ -94,6 +94,7 @@ nav a {
   position: relative;
   z-index: 2;
   max-width: 760px;
+  padding: 20px;
 }
 
 .eyebrow {
@@ -134,13 +135,38 @@ h3 {
   margin-top: 28px;
   padding: 14px 22px;
   border-radius: 999px;
+
   background: var(--turquoise);
   color: #071111;
   font-weight: 900;
   text-decoration: none;
-  border: none;
+
+  border: 3px solid transparent; 
   cursor: pointer;
+
   box-shadow: 0 14px 30px rgba(43, 198, 200, 0.25);
+
+  transform: scale(1);
+  transition: all 0.25s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.05); 
+  background: transparent;
+  border-color: var(--turquoise);
+  color: var(--turquoise);
+}
+
+@media (hover: none) {
+  .button:hover {
+    transform: none;
+    background: var(--turquoise);
+    color: #071111;
+    border-color: transparent;
+  }
+}
+.button:active {
+  transform: scale(0.96);
 }
 
 .section {
@@ -148,14 +174,84 @@ h3 {
 }
 
 .intro {
-  max-width: 920px;
+  max-width: none;
+  padding: 120px 6vw;
+  background:
+    radial-gradient(circle at 80% 40%, rgba(43,198,200,0.16), transparent 28%),
+    linear-gradient(135deg, #3b1c13, #130d0a);
 }
 
-.intro p:last-child {
+.intro-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.intro-text {
+  max-width: 760px;
+}
+
+.intro-text h2 {
+  font-size: clamp(2.6rem, 5.5vw, 5.4rem);
+  line-height: 0.95;
+}
+
+.intro-text p {
   font-size: 1.15rem;
   color: rgba(255, 246, 229, 0.82);
+  max-width: 680px;
 }
 
+.intro-visual {
+  min-height: 360px;
+  border-radius: 34px;
+  padding: 36px;
+  background:
+    linear-gradient(rgba(10,6,4,0.35), rgba(10,6,4,0.75)),
+    url("images/Radiator-springs-background.png") center / cover no-repeat;
+  border: 1px solid rgba(255, 246, 229, 0.16);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.route-badge {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--turquoise);
+  color: #071111;
+  font-size: 2.4rem;
+  font-weight: 900;
+  box-shadow: 0 0 32px rgba(43,198,200,0.5);
+  margin-bottom: auto;
+}
+
+.intro-visual p {
+  color: var(--turquoise);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 900;
+}
+
+.intro-visual h3 {
+  font-size: 2.2rem;
+}
+
+@media (max-width: 850px) {
+  .intro-card {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-visual {
+    min-height: 260px;
+  }
+}
 .section-heading {
   margin-bottom: 34px;
 }
@@ -283,5 +379,524 @@ footer {
 
   footer {
     flex-direction: column;
+  }
+}
+.sound-button {
+  position: relative;
+  z-index: 3;
+  margin-top: 18px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 246, 229, 0.35);
+  background: rgba(21, 16, 13, 0.72);
+  color: var(--cream);
+  font-weight: 900;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.sound-button:hover {
+  background: var(--turquoise);
+  color: #071111;
+}
+
+.video-bg iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-bg iframe,
+.video-bg #ytvideo {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.roadtrip-section {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 6vw 180px;
+  min-height: 1550px;
+  background:
+    linear-gradient(rgba(12, 6, 4, 0.35), rgba(12, 6, 4, 0.72)),
+    url("images/Radiator-springs-background.png") center center / cover no-repeat;
+}
+
+.roadtrip-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, #21140f);
+  pointer-events: none;
+}
+
+.roadtrip-section .section-heading h2 {
+  font-size: clamp(2.4rem, 5vw, 5.2rem);
+  max-width: 780px;
+  line-height: 0.95;
+}
+
+.roadtrip-timeline {
+  position: relative;
+  z-index: 2;
+  min-height: 1250px;
+}
+
+/* cards */
+.story-stop {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 18px;
+  align-items: center;
+  width: min(610px, 42vw);
+  padding: 16px;
+  background: rgba(12, 7, 5, 0.82);
+  border: 1px solid rgba(255, 246, 229, 0.18);
+  border-radius: 22px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+  backdrop-filter: blur(7px);
+
+  opacity: 0;
+  transform: translateY(50px) scale(0.96);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.story-stop.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.story-stop img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.story-stop.reverse {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.story-stop.reverse img {
+  order: 2;
+}
+
+.story-stop .number {
+  color: var(--turquoise);
+  font-size: 2.4rem;
+  opacity: 1;
+  line-height: 1;
+}
+
+.story-stop h3 {
+  font-size: 1.25rem;
+}
+
+.story-stop p {
+  font-size: 0.9rem;
+  color: rgba(255, 246, 229, 0.82);
+  margin-bottom: 8px;
+}
+
+.drive-text {
+  color: var(--turquoise) !important;
+  font-weight: 900;
+}
+
+/* desktop placement over background */
+.story-stop:nth-child(1) {
+  top: -40px;
+  right: 2vw;
+}
+
+.story-stop:nth-child(2) {
+  top: 220px;
+  left: 4vw;
+}
+
+.story-stop:nth-child(3) {
+  top: 370px;
+  right: 8vw;
+}
+
+.story-stop:nth-child(4) {
+  top: 650px;
+  left: 5vw;
+}
+
+.story-stop:nth-child(5) {
+  top: 760px;
+  right: 5vw;
+}
+
+.story-stop:nth-child(6) {
+  top: 1030px;
+  left: 8vw;
+}
+
+/* glowing dots */
+.story-stop::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--turquoise);
+  border: 5px solid #120907;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,0.15),
+    0 0 24px rgba(43,198,200,0.95),
+    0 0 55px rgba(43,198,200,0.55);
+  z-index: 5;
+}
+
+.story-stop:nth-child(1)::before {
+  left: -16px;
+  top: 48%;
+}
+
+.story-stop:nth-child(2)::before {
+  right: -16px;
+  top: 48%;
+}
+
+.story-stop:nth-child(3)::before {
+  left: -16px;
+  top: 50%;
+}
+
+.story-stop:nth-child(4)::before {
+  right: -16px;
+  top: 50%;
+}
+
+.story-stop:nth-child(5)::before {
+  left: -16px;
+  top: 50%;
+}
+
+.story-stop:nth-child(6)::before {
+  right: -16px;
+  top: 50%;
+}
+
+/* AR call-to-action under route */
+.ar-road-button {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+/* mobile */
+@media (max-width: 850px) {
+  .roadtrip-section {
+    min-height: auto;
+    padding: 80px 6vw;
+    background-position: center top;
+  }
+
+  .roadtrip-timeline {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .story-stop,
+  .story-stop.reverse {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .story-stop.reverse img {
+    order: 0;
+  }
+
+  .story-stop img {
+    height: 230px;
+  }
+
+  .story-stop::before {
+    left: 24px !important;
+    right: auto !important;
+    top: -14px !important;
+  }
+}
+.ar-road-button {
+  bottom: -70px;
+}
+
+.ar-road-button {
+  position: absolute;
+  left: 50%;
+  bottom: -95px;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.detail-grid img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.detail-text p {
+  color: rgba(255,255,255,0.8);
+}
+
+.roadtrip-section {
+  background-attachment: fixed;
+}
+
+.story-stop::before {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(43,198,200,0.7); }
+  70% { box-shadow: 0 0 0 20px rgba(43,198,200,0); }
+  100% { box-shadow: 0 0 0 0 rgba(43,198,200,0); }
+}
+
+.ar-experience {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 44px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(43,198,200,0.18), transparent 30%),
+    linear-gradient(135deg, #130d0a, #2a120c);
+}
+
+.ar-copy h2,
+.project-proof h2,
+.final-stop h2 {
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.95;
+}
+
+.ar-copy p,
+.final-stop p {
+  color: rgba(255,246,229,0.82);
+  font-size: 1.1rem;
+  max-width: 680px;
+}
+
+.ar-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.ar-points span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(43,198,200,0.12);
+  border: 1px solid rgba(43,198,200,0.38);
+  color: var(--turquoise);
+  font-weight: 900;
+}
+
+.project-proof {
+  background:
+    linear-gradient(rgba(12,7,5,0.85), rgba(12,7,5,0.92)),
+    url("images/Radiator-springs-background.png") center / cover no-repeat;
+}
+
+.proof-header {
+  max-width: 850px;
+  margin-bottom: 34px;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.proof-grid article {
+  min-height: 260px;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(18, 11, 8, 0.82);
+  border: 1px solid rgba(255,246,229,0.16);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+}
+
+.proof-grid span {
+  color: var(--turquoise);
+  font-size: 2.4rem;
+  font-weight: 900;
+}
+
+.proof-grid p {
+  color: rgba(255,246,229,0.78);
+}
+
+.final-stop {
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(43,198,200,0.18), transparent 35%),
+    linear-gradient(180deg, #2a120c, #090504);
+}
+
+.final-stop p {
+  margin: 0 auto;
+}
+
+@media (max-width: 850px) {
+  .ar-experience,
+  .proof-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ar-viewer {
+  display: grid;
+  gap: 20px;
+}
+
+.model {
+  width: 100%;
+  height: 420px;
+  border-radius: 28px;
+  background: rgba(12,7,5,0.85);
+  border: 1px solid rgba(255,246,229,0.16);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.ar-button {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+
+
+.sketchfab-embed-wrapper {
+  width: 100%;
+  height: 460px;
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+.sketchfab-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* mobiel */
+@media (max-width: 850px) {
+  .model {
+    height: 300px;
+  }
+
+  .sketchfab-embed-wrapper {
+    height: 400px;
+  }
+}
+
+.ar-viewer {
+  position: relative;
+}
+
+.ar-main-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+@media (max-width: 850px) {
+  .roadtrip-section {
+    padding: 80px 5vw 90px;
+    min-height: auto;
+    overflow: hidden;
+    background-attachment: scroll;
+  }
+
+  .roadtrip-timeline {
+    position: relative;
+    display: block;
+    min-height: auto;
+  }
+
+  .story-stop,
+  .story-stop.reverse,
+  .story-stop:nth-child(1),
+  .story-stop:nth-child(2),
+  .story-stop:nth-child(3),
+  .story-stop:nth-child(4),
+  .story-stop:nth-child(5),
+  .story-stop:nth-child(6) {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin: 0 0 32px 0 !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 24px;
+
+    transform: translateY(45px) scale(0.98);
+  }
+
+  .story-stop.show,
+  .story-stop.reverse.show {
+    transform: translateY(0) scale(1);
+  }
+
+  .story-stop img,
+  .story-stop.reverse img {
+    order: -1 !important;
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+
+  .story-stop::before {
+    left: 18px !important;
+    right: auto !important;
+    top: 18px !important;
+    width: 20px;
+    height: 20px;
+    border-width: 4px;
+  }
+
+  .ar-road-button {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
   }
 }

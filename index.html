@@ -13,22 +13,18 @@
     <nav>
       <a href="#spots">Spots</a>
       <a href="#ar">AR</a>
-      <a href="#reflectie">Reflectie</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <div class="video-bg">
-        <iframe
-  src="https://www.youtube.com/embed/SbXIj2T-_uk?playlist=SbXIj2T-_uk&loop=1&controls=1&rel=0&modestbranding=1"
-  title="Official Trailer: Cars"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen>
-</iframe>
+     <div id="ytvideo"></div>
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
+
+        <button class="sound-button" id="soundBtn">🔇 Geluid uit</button>
         <p class="eyebrow">Interactive AR story experience</p>
         <h1>Reis langs de iconische plekken uit de wereld van Cars</h1>
         <p>
@@ -39,96 +35,289 @@
       </div>
     </section>
 
-    <section class="intro section">
-      <p class="eyebrow">Concept</p>
-      <h2>Geen gewone informatieve site, maar een digitale roadtrip.</h2>
+ <section class="intro section">
+  <div class="intro-card">
+    <div class="intro-text">
+      <p class="eyebrow">Route 66 story experience</p>
+      <h2>De roadtrip begint net voordat de neonlichten aangaan.</h2>
       <p>
-        De website neemt de gebruiker stap voor stap mee langs bekende Cars-spots.
-        Elke locatie voelt als een hoofdstuk met beeld, tekst, sfeer en een AR-laag.
+        Aan de rand van Carburetor County wordt de weg warmer, de lucht oranje
+        en verschijnt Radiator Springs langzaam tussen de rotsen. Vanaf hier rijd
+        je van stop naar stop, alsof je zelf door de wereld van Cars rijdt.
       </p>
-    </section>
+      <a href="#spots" class="button">Bekijk de route</a>
+    </div>
 
-    <section id="spots" class="section">
-      <div class="section-heading">
-        <p class="eyebrow">Story spots</p>
-        <h2>Kies je volgende stop</h2>
-      </div>
+    <div class="intro-visual">
+      <span class="route-badge">66</span>
+      <p>Next stop</p>
+      <h3>Radiator Springs</h3>
+    </div>
+  </div>
+</section>
 
-      <div class="spot-grid">
-        <article class="spot-card">
-          <span class="number">01</span>
-          <h3>Radiator Springs</h3>
-          <p>Het warme hart van de route. Hier draait het verhaal om rust, vriendschap en opnieuw kijken naar wat belangrijk is.</p>
-          <a href="#ar">Bekijk AR moment</a>
-        </article>
+<section id="spots" class="section roadtrip-section">
+  <div class="section-heading">
+    <p class="eyebrow">Radiator Springs route</p>
+    <h2>Rijd van spot naar spot</h2>
+  </div>
 
-        <article class="spot-card">
-          <span class="number">02</span>
-          <h3>Flo’s V8 Café</h3>
-          <p>Een retro neon-stop vol sfeer, kleur en herkenning. Ideaal voor een interactieve overlay met licht en geluid.</p>
-          <a href="#ar">Bekijk AR moment</a>
-        </article>
+  <div class="roadtrip-timeline">
 
-        <article class="spot-card">
-          <span class="number">03</span>
-          <h3>Willy’s Butte</h3>
-          <p>Een dramatische woestijnlocatie waar snelheid, zand en filmische compositie centraal staan.</p>
-          <a href="#ar">Bekijk AR moment</a>
-        </article>
-      </div>
-    </section>
-
-    <section id="ar" class="section ar-section">
+    <article class="story-stop">
+      <img src="images/radiator-springs.jpg" alt="Radiator Springs" />
       <div>
-        <p class="eyebrow">AR prototype</p>
-        <h2>3D object als interactieve laag</h2>
+        <span class="number">01</span>
+        <h3>Radiator Springs</h3>
         <p>
-          Dit blok gebruikt <code>&lt;model-viewer&gt;</code>. Op geschikte mobiele apparaten verschijnt
-          een AR-knop. Vervang later het voorbeeldmodel door je eigen .glb-bestand, bijvoorbeeld een
-          zelfgemaakt low-poly raceauto-object.
+          Je eerste stop is het hart van de woestijnstad. Radiator Springs ligt aan Route 66,
+          tussen de rotsen van Ornament Valley en Cadillac Range. Ooit was dit een drukke plek,
+          totdat de snelweg het stadje voorbij reed. Nu voelt elke straat alsof de tijd even stil is blijven staan.
         </p>
-        <div class="note">
-          Zet je eigen model in een map <strong>models</strong> en verander de src naar:
-          <code>models/jouw-model.glb</code>
-        </div>
+        <p class="drive-text">Startpunt van de rit → de motor draait rustig warm.</p>
       </div>
+    </article>
 
-      <model-viewer
-        class="model"
-        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-        alt="3D model voor AR prototype"
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        camera-controls
-        auto-rotate
-        shadow-intensity="1">
-        <button slot="ar-button" class="button ar-button">Open in AR</button>
-      </model-viewer>
-    </section>
-
-    <section id="reflectie" class="section reflection">
-      <p class="eyebrow">Voor je datapunt</p>
-      <h2>Wat je hiermee kunt onderbouwen</h2>
-      <div class="reflection-grid">
-        <div>
-          <h3>UX</h3>
-          <p>De flow is duidelijk: intro → locaties → AR-moment → reflectie.</p>
-        </div>
-        <div>
-          <h3>UI</h3>
-          <p>De stijl gebruikt woestijntinten, Route 66-sfeer, retro vormen en filmische contrasten.</p>
-        </div>
-        <div>
-          <h3>Concept</h3>
-          <p>De gebruiker ontdekt locaties niet als losse informatie, maar als hoofdstukken van een verhaal.</p>
-        </div>
+    <article class="story-stop reverse">
+      <img src="images/cozy-cone.jpg" alt="Cozy Cone Motel" />
+      <div>
+        <span class="number">02</span>
+        <h3>Cozy Cone Motel</h3>
+        <p>
+          Je rolt langzaam langs de oranje kegels van het Cozy Cone Motel. Sally kocht en herstelde deze plek
+          toen ze besloot in Radiator Springs te blijven. De kamers zijn grote verkeerskegels, waardoor de plek
+          meteen speels en herkenbaar voelt.
+        </p>
+        <p class="drive-text">Volgende stop → neon aan, ramen omlaag.</p>
       </div>
-    </section>
+    </article>
+
+    <article class="story-stop">
+      <img src="images/flos-v8.jpg" alt="Flo's V8 Cafe" />
+      <div>
+        <span class="number">03</span>
+        <h3>Flo’s V8 Café</h3>
+        <p>
+          Bij Flo’s V8 Café wordt de roadtrip levendiger. Dit is de plek waar de inwoners samenkomen voor olie,
+          brandstof en verhalen. Het gebouw is ontworpen als een V8-motor, met neon, ronde vormen en een echte
+          diner-sfeer.
+        </p>
+        <p class="drive-text">Tussenstop → tanken, kijken, doorrijden.</p>
+      </div>
+    </article>
+
+    <article class="story-stop reverse">
+      <img src="images/luigis-tires.jpg" alt="Luigi's Casa Della Tires" />
+      <div>
+        <span class="number">04</span>
+        <h3>Luigi’s Casa Della Tires</h3>
+        <p>
+          Daarna kom je bij Luigi en Guido. Hun bandenwinkel ademt Italiaanse trots. De Leaning Tower of Tires
+          verwijst naar de Toren van Pisa, maar dan helemaal in Cars-stijl. Hier voelt zelfs een bandenwissel
+          als onderdeel van de show.
+        </p>
+        <p class="drive-text">Nieuwe banden → klaar voor de bochten buiten de stad.</p>
+      </div>
+    </article>
+
+    <article class="story-stop">
+      <img src="images/ramones-body-art.jpg" alt="Ramone's House of Body Art" />
+      <div>
+        <span class="number">05</span>
+        <h3>Ramone’s House of Body Art</h3>
+        <p>
+          Bij Ramone krijgt elke auto een eigen uitstraling. Zijn body shop is niet zomaar een garage,
+          maar een plek waar lak, kleur en persoonlijkheid samenkomen. Voor je verder rijdt, krijgt je route
+          hier een visuele upgrade.
+        </p>
+        <p class="drive-text">Nieuwe look → de zon zakt achter de rotsen.</p>
+      </div>
+    </article>
+
+    <article class="story-stop reverse">
+      <img src="images/willys-butte.jpg" alt="Willy's Butte" />
+      <div>
+        <span class="number">06</span>
+        <h3>Willy’s Butte</h3>
+        <p>
+          De laatste stop ligt buiten de stad. Willy’s Butte is de plek waar Lightning McQueen leerde dat snelheid
+          niet alles is. Hier draait het om controle, vertrouwen en de beroemde les: soms moet je rechts sturen
+          om links te gaan.
+        </p>
+       <a href="#ar" class="button ar-road-button">Bekijk 3D/AR moment →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+<section class="spot-detail section">
+  <div class="detail-grid">
+
+    <div class="detail-text">
+      <p class="eyebrow">Radiator Springs</p>
+     <h2>Het hart van de route</h2>
+<p class="story-line">
+  De motor wordt stiller. De zon zakt achter de rotsen en de neonlichten beginnen te gloeien.
+</p>
+<p>
+  Radiator Springs is geen gewone stop. Het is een plek waar snelheid even stopt en waar
+  verhalen beginnen. Hier leerde Lightning McQueen dat winnen niet alles is.
+</p>
+    </div>
+
+    <img src="images/radiator-springs.jpg" alt="Radiator Springs" />
+
+  </div>
+</section>
+
+<section id="ar" class="section ar-experience">
+  <div class="ar-copy">
+    <p class="eyebrow">3D / AR moment</p>
+    <h2>Ontdek Willy’s Butte in je eigen omgeving.</h2>
+
+    <p>
+      Aan het einde van de route bereik je Willy’s Butte. Dit is de plek waar
+      Lightning McQueen leert dat controle belangrijker is dan snelheid.
+      In deze ervaring kun je het landschap zelf verkennen.
+    </p>
+
+    <p>
+      Draai het model, zoom in en plaats Willy’s Butte via AR in je eigen ruimte.
+      Zo wordt het verhaal niet alleen bekeken, maar echt beleefd.
+    </p>
+
+    <div class="ar-points">
+      <span>360° bekijken</span>
+      <span>AR op mobiel</span>
+      <span>Interactief eindmoment</span>
+    </div>
+  </div>
+
+  <div class="ar-viewer">
+
+ 
+  <div class="sketchfab-embed-wrapper">
+    <iframe
+      title="Willy's Butte"
+      frameborder="0"
+      allowfullscreen
+      allow="autoplay; fullscreen; xr-spatial-tracking"
+      src="https://sketchfab.com/models/87849c6dae42476996ff957cc4adb70c/embed">
+    </iframe>
+  </div>
+
+ 
+  <model-viewer
+    id="arModel"
+    src="models/willys-butte.glb"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    camera-controls
+    style="width:0;height:0;opacity:0;position:absolute;">
+    
+    <button slot="ar-button" id="realArBtn"></button>
+  </model-viewer>
+
+ 
+  <button class="button ar-main-btn" onclick="openAR()">
+    Bekijk in AR 
+  </button>
+
+</div>
+</section>
+
+
+
+<section class="final-stop section">
+  <p class="eyebrow">Final stop</p>
+  <h2>De roadtrip eindigt, maar de wereld blijft ontdekbaar.</h2>
+  <p>
+    Cars Story Spots laat zien hoe bekende filmplekken kunnen veranderen in een
+    interactieve digitale ervaring met sfeer, verhaal en AR.
+  </p>
+  <a href="#" class="button">Terug naar boven</a>
+</section>
   </main>
 
   <footer>
     <p>Cars Story Spots — individueel AR prototype</p>
     <p class="small">Fan concept voor schoolproject. Niet officieel verbonden aan Disney/Pixar.</p>
   </footer>
+  
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+  let player;
+  let soundOn = false;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player("ytvideo", {
+      videoId: "SbXIj2T-_uk",
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        playlist: "SbXIj2T-_uk",
+        controls: 0,
+        rel: 0,
+        modestbranding: 1
+      },
+      events: {
+        onReady: function (event) {
+          event.target.playVideo();
+          event.target.mute();
+        }
+      }
+    });
+  }
+
+  document.getElementById("soundBtn").addEventListener("click", function () {
+    if (!player) return;
+
+    if (soundOn) {
+      player.mute();
+      this.textContent = "🔇 Geluid Uit";
+      soundOn = false;
+    } else {
+      player.unMute();
+      player.playVideo();
+      this.textContent = "🔊 Geluid Aan";
+      soundOn = true;
+    }
+  });
+
+  window.addEventListener("scroll", function () {
+    if (!player) return;
+
+    const hero = document.querySelector(".hero");
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+    if (window.scrollY > heroBottom - 120) {
+      player.pauseVideo();
+    } else {
+      player.playVideo();
+
+      if (!soundOn) {
+        player.mute();
+      }
+    }
+  });
+
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle("show", entry.isIntersecting);
+  });
+}, {
+  threshold: 0.25
+});
+
+document.querySelectorAll(".story-stop").forEach(el => {
+  observer.observe(el);
+});
+
+function openAR() {
+  document.getElementById("realArBtn").click();
+}
+</script>
 </body>
 </html>
